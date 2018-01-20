@@ -1,12 +1,10 @@
 <?php
 
-namespace Okvpn\Bundle\FixtureBundle\Event;
+namespace Okvpn\Component\Fixture\Event;
 
 use Doctrine\Common\Persistence\ObjectManager;
-
+use Okvpn\Component\Fixture\Migration\DataFixturesExecutorInterface;
 use Symfony\Component\EventDispatcher\Event;
-
-use Okvpn\Bundle\FixtureBundle\Migration\DataFixturesExecutorInterface;
 
 class DataFixturesEvent extends Event
 {
@@ -20,9 +18,9 @@ class DataFixturesEvent extends Event
     private $logger;
 
     /**
-     * @param ObjectManager $manager      The entity manager
-     * @param string        $fixturesType The type of data fixtures
-     * @param callable|null $logger       The callback for logging messages
+     * @param ObjectManager $manager The entity manager
+     * @param string $fixturesType The type of data fixtures
+     * @param callable|null $logger The callback for logging messages
      */
     public function __construct(ObjectManager $manager, $fixturesType, $logger = null)
     {

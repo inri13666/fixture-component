@@ -1,6 +1,6 @@
 <?php
 
-namespace Okvpn\Bundle\FixtureBundle\Fixture;
+namespace Okvpn\Component\Fixture\Fixture;
 
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\FixtureInterface;
@@ -15,13 +15,14 @@ abstract class AbstractEntityReferenceFixture extends AbstractFixture implements
      *
      * @param ObjectManager $objectManager
      * @param string $className
+     *
      * @return array
      * @see getObjectReferencesByIds
      */
     protected function getObjectReferences(ObjectManager $objectManager, $className)
     {
         $identifier = $objectManager->getClassMetadata($className)->getIdentifier();
-        $idField    = reset($identifier);
+        $idField = reset($identifier);
 
         /** @var EntityRepository $objectRepository */
         $objectRepository = $objectManager->getRepository($className);
@@ -47,6 +48,7 @@ abstract class AbstractEntityReferenceFixture extends AbstractFixture implements
      * @param ObjectManager $objectManager
      * @param string $className
      * @param array $ids
+     *
      * @return array
      */
     protected function getObjectReferencesByIds(ObjectManager $objectManager, $className, array $ids)

@@ -1,6 +1,6 @@
 <?php
 
-namespace Okvpn\Bundle\FixtureBundle\Fixture;
+namespace Okvpn\Component\Fixture\Fixture;
 
 interface VersionedFixtureInterface
 {

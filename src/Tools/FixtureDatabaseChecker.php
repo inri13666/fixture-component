@@ -1,6 +1,6 @@
 <?php
 
-namespace Okvpn\Bundle\FixtureBundle\Tools;
+namespace Okvpn\Component\Fixture\Tools;
 
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\DBALException;
@@ -8,7 +8,7 @@ use Doctrine\DBAL\DBALException;
 class FixtureDatabaseChecker
 {
     /**
-     * @param Connection           $connection
+     * @param Connection $connection
      * @param string[]|string|null $tables
      *
      * @return bool
@@ -32,6 +32,7 @@ class FixtureDatabaseChecker
     /**
      * @param Connection $connection
      * @param $tables
+     *
      * @internal
      */
     public static function declareTable(Connection $connection, $tables)

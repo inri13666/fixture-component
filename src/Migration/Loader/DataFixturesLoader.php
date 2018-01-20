@@ -1,19 +1,16 @@
 <?php
 
-namespace Okvpn\Bundle\FixtureBundle\Migration\Loader;
+namespace Okvpn\Component\Fixture\Migration\Loader;
 
+use Doctrine\Common\DataFixtures\Loader;
 use Doctrine\ORM\EntityManager;
+use Okvpn\Component\Fixture\Entity\DataFixture;
+use Okvpn\Component\Fixture\Fixture\LoadedFixtureVersionAwareInterface;
+use Okvpn\Component\Fixture\Fixture\VersionedFixtureInterface;
+use Okvpn\Component\Fixture\Migration\Sorter\DataFixturesSorter;
+use Okvpn\Component\Fixture\Migration\UpdateDataFixturesFixture;
 
-use Symfony\Component\DependencyInjection\ContainerInterface;
-use Symfony\Bridge\Doctrine\DataFixtures\ContainerAwareLoader;
-
-use Okvpn\Bundle\FixtureBundle\Entity\DataFixture;
-use Okvpn\Bundle\FixtureBundle\Migration\Sorter\DataFixturesSorter;
-use Okvpn\Bundle\FixtureBundle\Migration\UpdateDataFixturesFixture;
-use Okvpn\Bundle\FixtureBundle\Fixture\VersionedFixtureInterface;
-use Okvpn\Bundle\FixtureBundle\Fixture\LoadedFixtureVersionAwareInterface;
-
-class DataFixturesLoader extends ContainerAwareLoader
+class DataFixturesLoader extends Loader
 {
     /** @var EntityManager */
     protected $em;
@@ -27,13 +24,10 @@ class DataFixturesLoader extends ContainerAwareLoader
     /**
      * Constructor.
      *
-     * @param EntityManager      $em
-     * @param ContainerInterface $container
+     * @param EntityManager $em
      */
-    public function __construct(EntityManager $em, ContainerInterface $container)
+    public function __construct(EntityManager $em)
     {
-        parent::__construct($container);
-
         $this->em = $em;
     }
 
@@ -42,7 +36,7 @@ class DataFixturesLoader extends ContainerAwareLoader
      */
     public function getFixtures()
     {
-        $sorter   = new DataFixturesSorter();
+        $sorter = new DataFixturesSorter();
         $fixtures = $sorter->sort($this->getAllFixtures());
 
         // remove already loaded fixtures
@@ -83,7 +77,7 @@ class DataFixturesLoader extends ContainerAwareLoader
         if (!$this->loadedFixtures) {
             $this->loadedFixtures = [];
 
-            $loadedFixtures = $this->em->getRepository('OkvpnFixtureBundle:DataFixture')->findAll();
+            $loadedFixtures = $this->em->getRepository(DataFixture::class)->findAll();
             /** @var DataFixture $fixture */
             foreach ($loadedFixtures as $fixture) {
                 $this->loadedFixtures[$fixture->getClassName()] = $fixture->getVersion() ?: '0.0';

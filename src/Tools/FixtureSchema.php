@@ -1,6 +1,6 @@
 <?php
 
-namespace Okvpn\Bundle\FixtureBundle\Tools;
+namespace Okvpn\Component\Fixture\Tools;
 
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\Schema\AbstractSchemaManager;
@@ -25,13 +25,12 @@ class FixtureSchema extends BaseSchema
 
     /**
      * @param Connection $connection
-     * @param string     $tableName
+     * @param string $tableName
      */
     public function __construct(Connection $connection, $tableName)
     {
         $this->connection = $connection;
         $this->tableName = $tableName;
-
         $this->schemaManager = $this->connection->getSchemaManager();
 
         parent::__construct([], [], $this->schemaManager->createSchemaConfig());

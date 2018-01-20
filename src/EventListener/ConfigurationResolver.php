@@ -1,15 +1,16 @@
 <?php
 
-namespace Okvpn\Bundle\FixtureBundle\EventListener;
+namespace Okvpn\Component\Fixture\EventListener;
 
 use Doctrine\ORM\Event\LoadClassMetadataEventArgs;
 use Doctrine\ORM\Id\SequenceGenerator;
-use Okvpn\Bundle\FixtureBundle\Entity\DataFixture;
+use Okvpn\Component\Fixture\Entity\DataFixture;
 
 class ConfigurationResolver
 {
     const DEFAULT_TABLE = 'okvpn_fixture_data';
 
+    /** @var null|string */
     private $table;
 
     /**
@@ -29,9 +30,8 @@ class ConfigurationResolver
         if (null !== $this->table && $metadata->getName() === DataFixture::class) {
             $table = $metadata->table;
 
-            if ($this->table=== self::DEFAULT_TABLE) {
+            if ($this->table === self::DEFAULT_TABLE) {
                 return;
-
             }
             $table['name'] = $this->table;
             $metadata->setPrimaryTable($table);

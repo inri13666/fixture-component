@@ -1,14 +1,12 @@
 <?php
 
-namespace Okvpn\Bundle\FixtureBundle\Migration;
+namespace Okvpn\Component\Fixture\Migration;
 
 use Doctrine\Common\DataFixtures\Executor\ORMExecutor;
 use Doctrine\ORM\EntityManager;
-
+use Okvpn\Component\Fixture\Event\DataFixturesEvent;
+use Okvpn\Component\Fixture\Event\FixturesEvents;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
-
-use Okvpn\Bundle\FixtureBundle\Event\DataFixturesEvent;
-use Okvpn\Bundle\FixtureBundle\Event\FixturesEvents;
 
 final class DataFixturesExecutor implements DataFixturesExecutorInterface
 {
@@ -22,7 +20,7 @@ final class DataFixturesExecutor implements DataFixturesExecutorInterface
     private $logger;
 
     /**
-     * @param EntityManager            $em
+     * @param EntityManager $em
      * @param EventDispatcherInterface $eventDispatcher
      */
     public function __construct(EntityManager $em, EventDispatcherInterface $eventDispatcher)

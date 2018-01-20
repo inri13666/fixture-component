@@ -1,6 +1,6 @@
 <?php
 
-namespace Okvpn\Bundle\FixtureBundle\Migration;
+namespace Okvpn\Component\Fixture\Migration;
 
 use Doctrine\Common\DataFixtures\FixtureInterface;
 
@@ -15,8 +15,8 @@ interface DataFixturesExecutorInterface
     /**
      * Executes the given data fixtures.
      *
-     * @param FixtureInterface[] $fixtures     The list of data fixtures to execute
-     * @param string             $fixturesType The type of data fixtures
+     * @param FixtureInterface[] $fixtures The list of data fixtures to execute
+     * @param string $fixturesType The type of data fixtures
      */
     public function execute(array $fixtures, $fixturesType);
 

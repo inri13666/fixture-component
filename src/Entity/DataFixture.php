@@ -1,12 +1,12 @@
 <?php
 
-namespace Okvpn\Bundle\FixtureBundle\Entity;
+namespace Okvpn\Component\Fixture\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Table("okvpn_fixture_data")
- * @ORM\Entity(repositoryClass="Okvpn\Bundle\FixtureBundle\Entity\Repository\DataFixtureRepository")
+ * @ORM\Entity(repositoryClass="Okvpn\Component\Fixture\Entity\Repository\DataFixtureRepository")
  */
 class DataFixture
 {
@@ -15,7 +15,6 @@ class DataFixture
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
-     *
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
@@ -59,6 +58,7 @@ class DataFixture
 
     /**
      * @param string $className
+     *
      * @return $this
      */
     public function setClassName($className)
@@ -78,6 +78,7 @@ class DataFixture
 
     /**
      * @param \DateTime $loadedAt
+     *
      * @return $this
      */
     public function setLoadedAt($loadedAt)
@@ -89,6 +90,7 @@ class DataFixture
 
     /**
      * @param string $version
+     *
      * @return $this
      */
     public function setVersion($version)

@@ -1,6 +1,6 @@
 <?php
 
-namespace Okvpn\Bundle\FixtureBundle\Event;
+namespace Okvpn\Component\Fixture\Event;
 
 final class FixturesEvents
 {

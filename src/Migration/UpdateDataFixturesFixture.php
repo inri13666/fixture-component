@@ -1,10 +1,10 @@
 <?php
 
-namespace Okvpn\Bundle\FixtureBundle\Migration;
+namespace Okvpn\Component\Fixture\Migration;
 
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\Persistence\ObjectManager;
-use Okvpn\Bundle\FixtureBundle\Entity\DataFixture;
+use Okvpn\Component\Fixture\Entity\DataFixture;
 
 class UpdateDataFixturesFixture extends AbstractFixture
 {
